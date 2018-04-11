@@ -1,0 +1,154 @@
+<html>
+	<head>
+		<meta charset="UTF-8">			
+		<script src="statics/jquery-3.3.1.min.js"></script>
+		<script src="statics/functions.js"></script>
+		<title>Poker Calc</title>
+	</head>
+	<body>
+		<div class='cabecalho'>
+			<h1>Poker Calc</h1>
+		</div>
+		<div class='baralho'>
+				<table>
+					<thead>
+					</thead>
+					<tbody>
+						<tr>
+							<td><label class='carta 2 ouro' data-id="1" data-valor="2" data-naipe="ouro">2<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta 2 espada' data-id="1" data-valor="2" data-naipe="espada">2<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta 2 copas' data-id="1" data-valor="2" data-naipe="copas">2<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta 2 paus' data-id="1" data-valor="2" data-naipe="paus">2<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+						<tr>
+							<td><label class='carta 3 ouro' data-id="2" data-valor="3" data-naipe="ouro">3<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta 3 espada' data-id="2" data-valor="3" data-naipe="espada">3<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta 3 copas' data-id="2" data-valor="3" data-naipe="copas">3<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta 3 paus' data-id="2" data-valor="3" data-naipe="paus">3<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+						<tr>
+							<td><label class='carta 4 ouro' data-id="3" data-valor="4" data-naipe="ouro">4<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta 4 espada' data-id="3" data-valor="4" data-naipe="espada">4<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta 4 copas' data-id="3" data-valor="4" data-naipe="copas">4<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta 4 paus' data-id="3" data-valor="4" data-naipe="paus">4<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+						<tr>
+							<td><label class='carta 5 ouro' data-id="4" data-valor="5" data-naipe="ouro">5<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta 5 espada' data-id="4" data-valor="5" data-naipe="espada">5<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta 5 copas' data-id="4" data-valor="5" data-naipe="copas">5<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta 5 paus' data-id="4" data-valor="5" data-naipe="paus">5<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+						<tr>
+							<td><label class='carta 6 ouro' data-id="5" data-valor="6" data-naipe="ouro">6<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta 6 espada' data-id="5" data-valor="6" data-naipe="espada">6<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta 6 copas' data-id="5" data-valor="6" data-naipe="copas">6<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta 6 paus' data-id="5" data-valor="6" data-naipe="paus">6<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+						<tr>
+							<td><label class='carta 7 ouro' data-id="6" data-valor="7" data-naipe="ouro">7<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta 7 espada' data-id="6" data-valor="7" data-naipe="espada">7<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta 7 copas' data-id="6" data-valor="7" data-naipe="copas">7<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta 7 paus' data-id="6" data-valor="7" data-naipe="paus">7<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+						<tr>
+							<td><label class='carta 8 ouro' data-id="7" data-valor="8" data-naipe="ouro">8<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta 8 espada' data-id="7" data-valor="8" data-naipe="espada">8<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta 8 copas' data-id="7" data-valor="8" data-naipe="copas">8<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta 8 paus' data-id="7" data-valor="8" data-naipe="paus">8<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+						<tr>
+							<td><label class='carta 9 ouro' data-id="8" data-valor="9" data-naipe="ouro">9<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta 9 espada' data-id="8" data-valor="9" data-naipe="espada">9<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta 9 copas' data-id="8" data-valor="9" data-naipe="copas">9<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta 9 paus' data-id="8" data-valor="9" data-naipe="paus">9<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+						<tr>
+							<td><label class='carta 10 ouro' data-id="9" data-valor="10" data-naipe="ouro">10<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta 10 espada' data-id="9" data-valor="10" data-naipe="espada">10<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta 10 copas' data-id="9" data-valor="10" data-naipe="copas">10<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta 10 paus' data-id="9" data-valor="10" data-naipe="paus">10<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+						<tr>
+							<td><label class='carta J ouro' data-id="10" data-valor="J" data-naipe="ouro">J<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta J espada' data-id="10" data-valor="J" data-naipe="espada">J<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta J copas' data-id="10" data-valor="J" data-naipe="copas">J<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta J paus' data-id="10" data-valor="J" data-naipe="paus">J<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+						<tr>
+							<td><label class='carta Q ouro' data-id="11" data-valor="Q" data-naipe="ouro">Q<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta Q espada' data-id="11" data-valor="Q" data-naipe="espada">Q<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta Q copas' data-id="11" data-valor="Q" data-naipe="copas">Q<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta Q paus' data-id="11" data-valor="Q" data-naipe="paus">Q<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+						<tr>
+							<td><label class='carta K ouro' data-id="12" data-valor="K" data-naipe="ouro">K<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta K espada' data-id="12" data-valor="K" data-naipe="espada">K<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta K copas' data-id="12" data-valor="K" data-naipe="copas">K<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta K paus' data-id="12" data-valor="K" data-naipe="paus">K<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+						<tr>
+							<td><label class='carta A ouro' data-id="13" data-valor="A" data-naipe="ouro">A<img src="images/ouro.png" height="15" width="15"></label></td>
+							<td><label class='carta A espada' data-id="13" data-valor="A" data-naipe="espada">A<img src="images/espada.png" height="15" width="15"></label></td>
+							<td><label class='carta A copas' data-id="13" data-valor="A" data-naipe="copas">A<img src="images/copas.png" height="15" width="15"></label></td>
+							<td><label class='carta A paus' data-id="13" data-valor="A" data-naipe="paus">A<img src="images/paus.png" height="15" width="15"></label></td>
+						</tr>
+					</tbody>
+				</table>
+			<br>	
+		</div>
+		<button class='limpar-tudo'>Limpar Tudo</button>
+		<button class='limpar-hand'>Limpar Hand</button>
+		<button class='limpar-flop'>Limpar Flop</button>
+		<button class='limpar-turn'>Limpar Turn</button>
+		<button class='limpar-river'>Limpar River</button>
+		<br><br>
+		<div class='hand'>
+			<label>Hand<label>
+			<div class='hand-content'></div>
+		</div>
+		<br><br>
+		<div class='board'>
+			<div class='flop'>
+				<label>Flop<label>
+				<div class='flop-content'></div>
+			</div>
+			<div class='turn'>
+				<label>Turn<label>
+				<div class='turn-content'></div>
+			</div>
+			<div class='river'>
+				<label>River<label>
+				<div class='river-content'></div>
+			</div>
+			<button class='calcular'>Calcular</button>
+		</div>
+	</body>
+</html>
+
+<style>
+.ouro, .copas{
+	color: red;
+}
+
+.baralho, .flop, .turn, .river{
+	float: left;
+	padding: 0 10px;	
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+</style>
