@@ -352,16 +352,16 @@ function isFlush(objArray){
 		}
 	});
 
-	if(countOuro >= 4){
+	if(countOuro >= 5){
 		return true;
 	}
-	if(countEspada >= 4){
+	if(countEspada >= 5){
 		return true;
 	}
-	if(countCopas >= 4){
+	if(countCopas >= 5){
 		return true;
 	}
-	if(countPaus >= 4){
+	if(countPaus >= 5){
 		return true;
 	}
 	return false;
