@@ -28,8 +28,9 @@ $(document).ready(function(){
 			var highHand = getHighHand(boardArrayObject);
 			$("#high-hand").html(highHand);
 
-			//// getOuts
-			var arrayOuts = getOuts();
+			$('#total-outs').html('');
+			$('#outs-content').html('');
+			getOuts();
 
 		};
 	});
@@ -40,6 +41,8 @@ $(document).ready(function(){
 		$('.turn-content').html('');
 		$('.river-content').html('');
 		$('#high-hand').html('');
+		$('#total-outs').html('');
+		$('#outs-content').html('');
 	});
 
 	$('.clean-hand').on('click', function(){
