@@ -338,16 +338,16 @@ function isFlush(objArray){
 	var countCopas = 0;
 	var countPaus = 0;
 	objArray.forEach(function(value){
-		if(value['naipe'] == 'ouro'){
+		if(value['naipe'] == 'diams'){
 			countOuro++;
 		}
-		if(value['naipe'] == 'espada'){
+		if(value['naipe'] == 'spades'){
 			countEspada++;
 		}
-		if(value['naipe'] == 'copas'){
+		if(value['naipe'] == 'hearts'){
 			countCopas++;
 		}
-		if(value['naipe'] == 'paus'){
+		if(value['naipe'] == 'clubs'){
 			countPaus++;
 		}
 	});
@@ -646,63 +646,63 @@ function getOuts(){
 		if(arrayPairOuts.length > 0){
 			html += "<div><h3>PairOuts</h3>";
 				arrayPairOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"<img src='images/"+val['naipe']+".png' height='15' width='15'></label>";
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
 				});
 			html += "</div>";
 		}
 		if(arrayTwoPairsOuts.length > 0){
 			html += "<div><h3>TwoPairsOuts</h3>";
 				arrayTwoPairsOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"<img src='images/"+val['naipe']+".png' height='15' width='15'></label>";
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
 				});
 			html += "</div>";
 		}
 		if(arrayTreeOfaKindOuts.length > 0){
 			html += "<div><h3>TreeOfaKindOuts</h3>";
 				arrayTreeOfaKindOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"<img src='images/"+val['naipe']+".png' height='15' width='15'></label>";
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
 				});
 			html += "</div>";
 		}
 		if(arrayStraightOuts.length > 0){
 			html += "<div><h3>StraightOuts</h3>";
 				arrayStraightOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"<img src='images/"+val['naipe']+".png' height='15' width='15'></label>";
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
 				});
 			html += "</div>";
 		}
 		if(arrayFlushOuts.length > 0){
 			html += "<div><h3>FlushOuts</h3>";
 				arrayFlushOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"<img src='images/"+val['naipe']+".png' height='15' width='15'></label>";
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
 				});
 			html += "</div>";
 		}
 		if(arrayFullHouseOuts.length > 0){
 			html += "<div><h3>FullHouseOuts</h3>";
 				arrayFullHouseOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"<img src='images/"+val['naipe']+".png' height='15' width='15'></label>";
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
 				});
 			html += "</div>";
 		}
 		if(arrayFourofakindOuts.length > 0){
 			html += "<div><h3>FourofakindOuts</h3>";
 				arrayFourofakindOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"<img src='images/"+val['naipe']+".png' height='15' width='15'></label>";
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
 				});
 			html += "</div>";
 		}
 		if(arrayStraightFlushOuts.length > 0){
 			html += "<div><h3>StraightFlushOuts</h3>";
 				arrayStraightFlushOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"<img src='images/"+val['naipe']+".png' height='15' width='15'></label>";
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
 				});
 			html += "</div>";
 		}
 		if(arrayRoyalFlushOuts.length > 0){
 			html += "<div><h3>RoyalFlushOuts</h3>";
 				arrayRoyalFlushOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"<img src='images/"+val['naipe']+".png' height='15' width='15'></label>";
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
 				});
 			html += "</div>";
 		}
@@ -717,58 +717,58 @@ function getOuts(){
 
 function buildPackArrayObject(){
 	pack = [
-		{id: 1, index: 1, value: 2, naipe: "ouro"},
-		{id: 2, index: 1, value: 2, naipe: "espada"},
-		{id: 3, index: 1, value: 2, naipe: "copas"},
-		{id: 4, index: 1, value: 2, naipe: "paus"},
-		{id: 5, index: 2, value: 3, naipe: "ouro"},
-		{id: 6, index: 2, value: 3, naipe: "espada"},
-		{id: 7, index: 2, value: 3, naipe: "copas"},
-		{id: 8, index: 2, value: 3, naipe: "paus"},
-		{id: 9, index: 3, value: 4, naipe: "ouro"},
-		{id: 10, index: 3, value: 4, naipe: "espada"},
-		{id: 11, index: 3, value: 4, naipe: "copas"},
-		{id: 12, index: 3, value: 4, naipe: "paus"},
-		{id: 13, index: 4, value: 5, naipe: "ouro"},
-		{id: 14, index: 4, value: 5, naipe: "espada"},
-		{id: 15, index: 4, value: 5, naipe: "copas"},
-		{id: 16, index: 4, value: 5, naipe: "paus"},
-		{id: 17, index: 5, value: 6, naipe: "ouro"},
-		{id: 18, index: 5, value: 6, naipe: "espada"},
-		{id: 19, index: 5, value: 6, naipe: "copas"},
-		{id: 20, index: 5, value: 6, naipe: "paus"},
-		{id: 21, index: 6, value: 7, naipe: "ouro"},
-		{id: 22, index: 6, value: 7, naipe: "espada"},
-		{id: 23, index: 6, value: 7, naipe: "copas"},
-		{id: 24, index: 6, value: 7, naipe: "paus"},
-		{id: 25, index: 7, value: 8, naipe: "ouro"},
-		{id: 26, index: 7, value: 8, naipe: "espada"},
-		{id: 27, index: 7, value: 8, naipe: "copas"},
-		{id: 28, index: 7, value: 8, naipe: "paus"},
-		{id: 29, index: 8, value: 9, naipe: "ouro"},
-		{id: 30, index: 8, value: 9, naipe: "espada"},
-		{id: 31, index: 8, value: 9, naipe: "copas"},
-		{id: 32, index: 8, value: 9, naipe: "paus"},
-		{id: 33, index: 9, value: 10, naipe: "ouro"},
-		{id: 34, index: 9, value: 10, naipe: "espada"},
-		{id: 35, index: 9, value: 10, naipe: "copas"},
-		{id: 36, index: 9, value: 10, naipe: "paus"},
-		{id: 37, index: 10, value: "J", naipe: "ouro"},
-		{id: 38, index: 10, value: "J", naipe: "espada"},
-		{id: 39, index: 10, value: "J", naipe: "copas"},
-		{id: 40, index: 10, value: "J", naipe: "paus"},
-		{id: 41, index: 11, value: "Q", naipe: "ouro"},
-		{id: 42, index: 11, value: "Q", naipe: "espada"},
-		{id: 43, index: 11, value: "Q", naipe: "copas"},
-		{id: 44, index: 11, value: "Q", naipe: "paus"},
-		{id: 45, index: 12, value: "K", naipe: "ouro"},
-		{id: 46, index: 12, value: "K", naipe: "espada"},
-		{id: 47, index: 12, value: "K", naipe: "copas"},
-		{id: 48, index: 12, value: "K", naipe: "paus"},
-		{id: 49, index: 13, value: "A", naipe: "ouro"},
-		{id: 50, index: 13, value: "A", naipe: "espada"},
-		{id: 51, index: 13, value: "A", naipe: "copas"},
-		{id: 52, index: 13, value: "A", naipe: "paus"}
+		{id: 1, index: 1, value: 2, naipe: "diams"},
+		{id: 2, index: 1, value: 2, naipe: "spades"},
+		{id: 3, index: 1, value: 2, naipe: "hearts"},
+		{id: 4, index: 1, value: 2, naipe: "clubs"},
+		{id: 5, index: 2, value: 3, naipe: "diams"},
+		{id: 6, index: 2, value: 3, naipe: "spades"},
+		{id: 7, index: 2, value: 3, naipe: "hearts"},
+		{id: 8, index: 2, value: 3, naipe: "clubs"},
+		{id: 9, index: 3, value: 4, naipe: "diams"},
+		{id: 10, index: 3, value: 4, naipe: "spades"},
+		{id: 11, index: 3, value: 4, naipe: "hearts"},
+		{id: 12, index: 3, value: 4, naipe: "clubs"},
+		{id: 13, index: 4, value: 5, naipe: "diams"},
+		{id: 14, index: 4, value: 5, naipe: "spades"},
+		{id: 15, index: 4, value: 5, naipe: "hearts"},
+		{id: 16, index: 4, value: 5, naipe: "clubs"},
+		{id: 17, index: 5, value: 6, naipe: "diams"},
+		{id: 18, index: 5, value: 6, naipe: "spades"},
+		{id: 19, index: 5, value: 6, naipe: "hearts"},
+		{id: 20, index: 5, value: 6, naipe: "clubs"},
+		{id: 21, index: 6, value: 7, naipe: "diams"},
+		{id: 22, index: 6, value: 7, naipe: "spades"},
+		{id: 23, index: 6, value: 7, naipe: "hearts"},
+		{id: 24, index: 6, value: 7, naipe: "clubs"},
+		{id: 25, index: 7, value: 8, naipe: "diams"},
+		{id: 26, index: 7, value: 8, naipe: "spades"},
+		{id: 27, index: 7, value: 8, naipe: "hearts"},
+		{id: 28, index: 7, value: 8, naipe: "clubs"},
+		{id: 29, index: 8, value: 9, naipe: "diams"},
+		{id: 30, index: 8, value: 9, naipe: "spades"},
+		{id: 31, index: 8, value: 9, naipe: "hearts"},
+		{id: 32, index: 8, value: 9, naipe: "clubs"},
+		{id: 33, index: 9, value: 10, naipe: "diams"},
+		{id: 34, index: 9, value: 10, naipe: "spades"},
+		{id: 35, index: 9, value: 10, naipe: "hearts"},
+		{id: 36, index: 9, value: 10, naipe: "clubs"},
+		{id: 37, index: 10, value: "J", naipe: "diams"},
+		{id: 38, index: 10, value: "J", naipe: "spades"},
+		{id: 39, index: 10, value: "J", naipe: "hearts"},
+		{id: 40, index: 10, value: "J", naipe: "clubs"},
+		{id: 41, index: 11, value: "Q", naipe: "diams"},
+		{id: 42, index: 11, value: "Q", naipe: "spades"},
+		{id: 43, index: 11, value: "Q", naipe: "hearts"},
+		{id: 44, index: 11, value: "Q", naipe: "clubs"},
+		{id: 45, index: 12, value: "K", naipe: "diams"},
+		{id: 46, index: 12, value: "K", naipe: "spades"},
+		{id: 47, index: 12, value: "K", naipe: "hearts"},
+		{id: 48, index: 12, value: "K", naipe: "clubs"},
+		{id: 49, index: 13, value: "A", naipe: "diams"},
+		{id: 50, index: 13, value: "A", naipe: "spades"},
+		{id: 51, index: 13, value: "A", naipe: "hearts"},
+		{id: 52, index: 13, value: "A", naipe: "clubs"}
 	];
 	return pack;
 }
