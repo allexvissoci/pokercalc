@@ -1,304 +1,311 @@
 <html>
 	<head>
-		<meta charset="UTF-8">			
-		<script src="statics/jquery-3.3.1.min.js"></script>
-		<script src="statics/functions.js"></script>
-		<!-- <title>Poker Calc</title> -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="statics/js/functions.js"></script>
+		<link href="statics/css/tudo.css" rel="stylesheet" type="text/css">
+		<title>Poker Calc</title>
 	</head>
 	<body>
-		<div class="container">
-			<div class='header'>
-				<h1>Poker Calc</h1>
-			</div>
-			<div class='pack'>
-				<table>
-					<thead>
-					</thead>
-					<tbody>
-						<tr>
-							<td>
-								<label class='card 2 diams' data-id='1' data-index="1" data-value="2" data-naipe="diams">2 &diams;</label>
-							</td>
-							<td>
-								<label class='card 2 spades' data-id='2' data-index="1" data-value="2" data-naipe="spades">2 &spades;</label>
-							</td>
-							<td>
-								<label class='card 2 hearts' data-id='3' data-index="1" data-value="2" data-naipe="hearts">2 &hearts;</label>
-							</td>
-							<td>
-								<label class='card 2 clubs' data-id='4' data-index="1" data-value="2" data-naipe="clubs">2 &clubs;</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class='card 3 diams' data-id='5' data-index="2" data-value="3" data-naipe="diams">3 &diams;</label>
-							</td>
-							<td>
-								<label class='card 3 spades' data-id='6' data-index="2" data-value="3" data-naipe="spades">3 &spades;</label>
-							</td>
-							<td>
-								<label class='card 3 hearts' data-id='7' data-index="2" data-value="3" data-naipe="hearts">3 &hearts;</label>
-							</td>
-							<td>
-								<label class='card 3 clubs' data-id='8' data-index="2" data-value="3" data-naipe="clubs">3 &clubs;</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class='card 4 diams' data-id='9' data-index="3" data-value="4" data-naipe="diams">4 &diams;</label>
-							</td>
-							<td>
-								<label class='card 4 spades' data-id='10' data-index="3" data-value="4" data-naipe="spades">4 &spades;</label>
-							</td>
-							<td>
-								<label class='card 4 hearts' data-id='11' data-index="3" data-value="4" data-naipe="hearts">4 &hearts;</label>
-							</td>
-							<td>
-								<label class='card 4 clubs' data-id='12' data-index="3" data-value="4" data-naipe="clubs">4 &clubs;</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class='card 5 diams' data-id='13' data-index="4" data-value="5" data-naipe="diams">5 &diams;</label>
-							</td>
-							<td>
-								<label class='card 5 spades' data-id='14' data-index="4" data-value="5" data-naipe="spades">5 &spades;</label>
-							</td>
-							<td>
-								<label class='card 5 hearts' data-id='15' data-index="4" data-value="5" data-naipe="hearts">5 &hearts;</label>
-							</td>
-							<td>
-								<label class='card 5 clubs' data-id='16' data-index="4" data-value="5" data-naipe="clubs">5 &clubs;</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class='card 6 diams' data-id='17' data-index="5" data-value="6" data-naipe="diams">6 &diams;</label>
-							</td>
-							<td>
-								<label class='card 6 spades' data-id='18' data-index="5" data-value="6" data-naipe="spades">6 &spades;</label>
-							</td>
-							<td>
-								<label class='card 6 hearts' data-id='19' data-index="5" data-value="6" data-naipe="hearts">6 &hearts;</label>
-							</td>
-							<td>
-								<label class='card 6 clubs' data-id='20' data-index="5" data-value="6" data-naipe="clubs">6 &clubs;</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class='card 7 diams' data-id='21' data-index="6" data-value="7" data-naipe="diams">7 &diams;</label>
-							</td>
-							<td>
-								<label class='card 7 spades' data-id='22' data-index="6" data-value="7" data-naipe="spades">7 &spades;</label>
-							</td>
-							<td>
-								<label class='card 7 hearts' data-id='23' data-index="6" data-value="7" data-naipe="hearts">7 &hearts;</label>
-							</td>
-							<td>
-								<label class='card 7 clubs' data-id='24' data-index="6" data-value="7" data-naipe="clubs">7 &clubs;</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class='card 8 diams' data-id='25' data-index="7" data-value="8" data-naipe="diams">8 &diams;</label>
-							</td>
-							<td>
-								<label class='card 8 spades' data-id='26' data-index="7" data-value="8" data-naipe="spades">8 &spades;</label>
-							</td>
-							<td>
-								<label class='card 8 hearts' data-id='27' data-index="7" data-value="8" data-naipe="hearts">8 &hearts;</label>
-							</td>
-							<td>
-								<label class='card 8 clubs' data-id='28' data-index="7" data-value="8" data-naipe="clubs">8 &clubs;</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class='card 9 diams' data-id='29' data-index="8" data-value="9" data-naipe="diams">9 &diams;</label>
-							</td>
-							<td>
-								<label class='card 9 spades' data-id='30' data-index="8" data-value="9" data-naipe="spades">9 &spades;</label>
-							</td>
-							<td>
-								<label class='card 9 hearts' data-id='31' data-index="8" data-value="9" data-naipe="hearts">9 &hearts;</label>
-							</td>
-							<td>
-								<label class='card 9 clubs' data-id='32' data-index="8" data-value="9" data-naipe="clubs">9 &clubs;</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class='card 10 diams' data-id='33' data-index="9" data-value="10" data-naipe="diams">10 &diams;</label>
-							</td>
-							<td>
-								<label class='card 10 spades' data-id='34' data-index="9" data-value="10" data-naipe="spades">10 &spades;</label>
-							</td>
-							<td>
-								<label class='card 10 hearts' data-id='35' data-index="9" data-value="10" data-naipe="hearts">10 &hearts;</label>
-							</td>
-							<td>
-								<label class='card 10 clubs' data-id='36' data-index="9" data-value="10" data-naipe="clubs">10 &clubs;</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class='card J diams' data-id='37' data-index="10" data-value="J" data-naipe="diams">J &diams;</label>
-							</td>
-							<td>
-								<label class='card J spades' data-id='38' data-index="10" data-value="J" data-naipe="spades">J &spades;</label>
-							</td>
-							<td>
-								<label class='card J hearts' data-id='39' data-index="10" data-value="J" data-naipe="hearts">J &hearts;</label>
-							</td>
-							<td>
-								<label class='card J clubs' data-id='40' data-index="10" data-value="J" data-naipe="clubs">J &clubs;</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class='card Q diams' data-id='41' data-index="11" data-value="Q" data-naipe="diams">Q &diams;</label>
-							</td>
-							<td>
-								<label class='card Q spades' data-id='42' data-index="11" data-value="Q" data-naipe="spades">Q &spades;</label>
-							</td>
-							<td>
-								<label class='card Q hearts' data-id='43' data-index="11" data-value="Q" data-naipe="hearts">Q &hearts;</label>
-							</td>
-							<td>
-								<label class='card Q clubs' data-id='44' data-index="11" data-value="Q" data-naipe="clubs">Q &clubs;</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class='card K diams' data-id='45' data-index="12" data-value="K" data-naipe="diams">K &diams;</label>
-							</td>
-							<td>
-								<label class='card K spades' data-id='46' data-index="12" data-value="K" data-naipe="spades">K &spades;</label>
-							</td>
-							<td>
-								<label class='card K hearts' data-id='47' data-index="12" data-value="K" data-naipe="hearts">K &hearts;</label>
-							</td>
-							<td>
-								<label class='card K clubs' data-id='48' data-index="12" data-value="K" data-naipe="clubs">K &clubs;</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class='card A diams' data-id='49' data-index="13" data-value="A" data-naipe="diams">A &diams;</label>
-							</td>
-							<td>
-								<label class='card A spades' data-id='50' data-index="13" data-value="A" data-naipe="spades">A &spades;</label>
-							</td>
-							<td>
-								<label class='card A hearts' data-id='51' data-index="13" data-value="A" data-naipe="hearts">A &hearts;</label>
-							</td>
-							<td>
-								<label class='card A clubs' data-id='52' data-index="13" data-value="A" data-naipe="clubs">A &clubs;</label>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="details">
-				<div class='buttons'>
-					<button class='clean-all'>Clean All</button>
-					<button class='clean-hand'>Clean Hand</button>
-					<button class='clean-flop'>Clean Flop</button>
-					<button class='clean-turn'>Clean Turn</button>
-					<button class='clean-river'>Clean River</button>
+		<div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<nav class="navbar navbar-inverse">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<a class="navbar-brand" href="#" active>Poker Calc</a>
+							</div>
+							<ul class="nav navbar-nav">
+								<li class="active">
+									<a href="#">
+										<span style="color:red;">&diams;</span>
+										<span>&spades;</span>
+										<span style="color:red;">&hearts;</span>
+										<span>&clubs;</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
 				</div>
-				<div class='board-details'>
-					<div class='hand'>
-						<h3>Hand</h3>
-						<div class='hand-content'></div>
-					</div>
-					<div class='board'>
-						<div class='flop'>
-							<h3>Flop</h3>
-							<div class='flop-content'></div>
+			</div>
+			<div class="container-fluid">
+				<div class='row'>
+					<div class='col-md-4'>
+						<div class='pack'>
+							<table>
+								<tbody>
+									<tr>
+										<td class='card'>
+											<label class='2 diams' data-id='1' data-index="1" data-value="2" data-naipe="diams">2 &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='2 spades' data-id='2' data-index="1" data-value="2" data-naipe="spades">2 &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='2 hearts' data-id='3' data-index="1" data-value="2" data-naipe="hearts">2 &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='2 clubs' data-id='4' data-index="1" data-value="2" data-naipe="clubs">2 &clubs;</label>
+										</td>
+									</tr>
+									<tr>
+										<td class='card'>
+											<label class='3 diams' data-id='5' data-index="2" data-value="3" data-naipe="diams">3 &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='3 spades' data-id='6' data-index="2" data-value="3" data-naipe="spades">3 &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='3 hearts' data-id='7' data-index="2" data-value="3" data-naipe="hearts">3 &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='3 clubs' data-id='8' data-index="2" data-value="3" data-naipe="clubs">3 &clubs;</label>
+										</td>
+									</tr>
+									<tr>
+										<td class='card'>
+											<label class='4 diams' data-id='9' data-index="3" data-value="4" data-naipe="diams">4 &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='4 spades' data-id='10' data-index="3" data-value="4" data-naipe="spades">4 &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='4 hearts' data-id='11' data-index="3" data-value="4" data-naipe="hearts">4 &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='4 clubs' data-id='12' data-index="3" data-value="4" data-naipe="clubs">4 &clubs;</label>
+										</td>
+									</tr>
+									<tr>
+										<td class='card'>
+											<label class='5 diams' data-id='13' data-index="4" data-value="5" data-naipe="diams">5 &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='5 spades' data-id='14' data-index="4" data-value="5" data-naipe="spades">5 &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='5 hearts' data-id='15' data-index="4" data-value="5" data-naipe="hearts">5 &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='5 clubs' data-id='16' data-index="4" data-value="5" data-naipe="clubs">5 &clubs;</label>
+										</td>
+									</tr>
+									<tr>
+										<td class='card'>
+											<label class='6 diams' data-id='17' data-index="5" data-value="6" data-naipe="diams">6 &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='6 spades' data-id='18' data-index="5" data-value="6" data-naipe="spades">6 &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='6 hearts' data-id='19' data-index="5" data-value="6" data-naipe="hearts">6 &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='6 clubs' data-id='20' data-index="5" data-value="6" data-naipe="clubs">6 &clubs;</label>
+										</td>
+									</tr>
+									<tr>
+										<td class='card'>
+											<label class='7 diams' data-id='21' data-index="6" data-value="7" data-naipe="diams">7 &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='7 spades' data-id='22' data-index="6" data-value="7" data-naipe="spades">7 &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='7 hearts' data-id='23' data-index="6" data-value="7" data-naipe="hearts">7 &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='7 clubs' data-id='24' data-index="6" data-value="7" data-naipe="clubs">7 &clubs;</label>
+										</td>
+									</tr>
+									<tr>
+										<td class='card'>
+											<label class='8 diams' data-id='25' data-index="7" data-value="8" data-naipe="diams">8 &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='8 spades' data-id='26' data-index="7" data-value="8" data-naipe="spades">8 &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='8 hearts' data-id='27' data-index="7" data-value="8" data-naipe="hearts">8 &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='8 clubs' data-id='28' data-index="7" data-value="8" data-naipe="clubs">8 &clubs;</label>
+										</td>
+									</tr>
+									<tr>
+										<td class='card'>
+											<label class='9 diams' data-id='29' data-index="8" data-value="9" data-naipe="diams">9 &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='9 spades' data-id='30' data-index="8" data-value="9" data-naipe="spades">9 &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='9 hearts' data-id='31' data-index="8" data-value="9" data-naipe="hearts">9 &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='9 clubs' data-id='32' data-index="8" data-value="9" data-naipe="clubs">9 &clubs;</label>
+										</td>
+									</tr>
+									<tr>
+										<td class='card'>
+											<label class='10 diams' data-id='33' data-index="9" data-value="10" data-naipe="diams">10 &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='10 spades' data-id='34' data-index="9" data-value="10" data-naipe="spades">10 &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='10 hearts' data-id='35' data-index="9" data-value="10" data-naipe="hearts">10 &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='10 clubs' data-id='36' data-index="9" data-value="10" data-naipe="clubs">10 &clubs;</label>
+										</td>
+									</tr>
+									<tr>
+										<td class='card'>
+											<label class='J diams' data-id='37' data-index="10" data-value="J" data-naipe="diams">J &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='J spades' data-id='38' data-index="10" data-value="J" data-naipe="spades">J &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='J hearts' data-id='39' data-index="10" data-value="J" data-naipe="hearts">J &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='J clubs' data-id='40' data-index="10" data-value="J" data-naipe="clubs">J &clubs;</label>
+										</td>
+									</tr>
+									<tr>
+										<td class='card'>
+											<label class='Q diams' data-id='41' data-index="11" data-value="Q" data-naipe="diams">Q &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='Q spades' data-id='42' data-index="11" data-value="Q" data-naipe="spades">Q &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='Q hearts' data-id='43' data-index="11" data-value="Q" data-naipe="hearts">Q &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='Q clubs' data-id='44' data-index="11" data-value="Q" data-naipe="clubs">Q &clubs;</label>
+										</td>
+									</tr>
+									<tr>
+										<td class='card'>
+											<label class='K diams' data-id='45' data-index="12" data-value="K" data-naipe="diams">K &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='K spades' data-id='46' data-index="12" data-value="K" data-naipe="spades">K &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='K hearts' data-id='47' data-index="12" data-value="K" data-naipe="hearts">K &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='K clubs' data-id='48' data-index="12" data-value="K" data-naipe="clubs">K &clubs;</label>
+										</td>
+									</tr>
+									<tr>
+										<td class='card'>
+											<label class='A diams' data-id='49' data-index="13" data-value="A" data-naipe="diams">A &diams;</label>
+										</td>
+										<td class='card'>
+											<label class='A spades' data-id='50' data-index="13" data-value="A" data-naipe="spades">A &spades;</label>
+										</td>
+										<td class='card'>
+											<label class='A hearts' data-id='51' data-index="13" data-value="A" data-naipe="hearts">A &hearts;</label>
+										</td>
+										<td class='card'>
+											<label class='A clubs' data-id='52' data-index="13" data-value="A" data-naipe="clubs">A &clubs;</label>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
-						<div class='turn'>
-							<h3>Turn</h3>
-							<div class='turn-content'></div>
+					</div>
+					<div class='col-md-4 details'>
+						<div class='row'>
+							<div class='col-md-12'>
+								<button class='clean-all'>Clean All</button>
+								<button class='clean-hand'>Clean Hand</button>
+							</div>
 						</div>
-						<div class='river'>
-							<h3>River</h3>
-							<div class='river-content'></div>
+						<div class='row'>
+							<div class='col-md-12'>
+								<button class='clean-flop'>Clean Flop</button>
+								<button class='clean-turn'>Clean Turn</button>
+								<button class='clean-river'>Clean River</button>
+							</div>
+						</div>
+						<div class='row'>
+							<div class='col-md-12'>
+								<div class='board-details'>
+									<div class='row'>
+										<div class='col-md-12'>
+											<h3 >Hand</h3>
+											<div class='hand-content'></div>
+										</div>
+									</div>
+									<div class='row'>
+										<div class='col-md-5'>
+											<div class='flop'>
+												<h3>Flop</h3>
+												<div class='flop-content'></div>
+											</div>
+										</div>
+										<div class='col-md-4'>
+											<div class='turn'>
+												<h3>Turn</h3>
+												<div class='turn-content'></div>
+											</div>
+										</div>
+										<div class='col-md-3'>
+											<div class='river'>
+												<h3>River</h3>
+												<div class='river-content'></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row retults-contents">
+							<div class='col-md-12'>
+								<div class='row'>
+									<div class='col-md-12'>
+										<div class='ranking-hand'>
+											<div>
+												<label>High Hand:</label>
+												<span id='high-hand'></span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class='row'>
+									<div class='col-md-12'>
+										<div class='outs'>
+											<div>
+												<label>Total Outs:</label>
+												<span class="total-outs"></span>
+											</div>
+											<div id='outs-content'></div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="retults-contents">
-					<div class='ranking-hand'>
-						<h3>High Hand</h3>
-						<div id='high-hand'></div>
-					</div>
-					<div class='outs'>
-						<h3>Total Outs:</h3>
-						<span id="total-outs"></span>
-						<div id='outs-content'></div>
+					<div class='col-md-4'>
+						<div class='row'>
+							<div class='col-md-12'>
+								<h2>Range</h2>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</body>
 </html>
-
-<style>
-
-	/* TABLE  */
-	table {
-		font-family: arial, sans-serif;
-		border-collapse: collapse;
-		width: 100%;
-	}
-
-	td, th {
-		border: 1px solid #dddddd;
-		text-align: left;
-		padding: 8px;
-	}
-
-	tr:nth-child(even) {
-		background-color: #dddddd;
-	}
-
-	/* DETAILS */
-	.diams, .hearts{
-		color: red;
-	}
-
-	.pack, .flop, .turn, .river{
-		float: left;
-		padding: 0 10px;	
-	}
-
-	.hand-content label, .flop-content label, .turn-content label, .river-content label, #outs-content label {
-		border: 1px solid #dddddd;
-		text-align: left;
-		padding: 8px;
-		display: inline-block;
-	}
-
-
-	.hand-content label,
-	.flop-content label,
-	.turn-content label,
-	.river-content label,
-	#outs-content label  {
-		display: inline-block;
-		vertical-align: inherit;
-	}
-
-	.details{
-		float:left;
-	}
-
-	.board-details, .ranking-hand{
-		display:inline-block;
-	}
-
-	.header{
-		width: 100%;
-	}
-</style>

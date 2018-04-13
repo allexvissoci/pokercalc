@@ -1,0 +1,46 @@
+
+html, body{
+	margin: 0;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white !important;
+}
+
+/* TABLE  */
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: center;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+/* DETAILS */
+.diams, .hearts{
+	color: red;
+}
+
+
+.hand-content label, .flop-content label, .turn-content label, .river-content label, #outs-content label {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+	display: inline-block;
+}
+
+.pack {
+	width: 100%;
+}
+
+.high-hand, .total-outs, .percentage {
+	font-weight: normal;
+}
