@@ -21,9 +21,10 @@ $(document).ready(function(){
 		};
 	});
 	
-	var elementsCalculateClass =  document.getElementsByClassName("calculate");
-	Array.prototype.forEach.call(elementsCalculateClass, function(value){
-		value.onclick = function(){
+	$('.card').on('click', function(){
+		var handContentLength = $('.hand-content').children().length;
+		var flopContentLength = $('.flop-content').children().length;
+		if(handContentLength == 2 && flopContentLength == 3){
 			var boardArrayObject = buildBoardArrayObject();
 			var highHand = getHighHand(boardArrayObject);
 			$("#high-hand").html(highHand);
@@ -31,8 +32,8 @@ $(document).ready(function(){
 			$('#total-outs').html('');
 			$('#outs-content').html('');
 			getOuts();
+		}
 
-		};
 	});
 
 	$('.clean-all').on('click', function(){
@@ -47,6 +48,8 @@ $(document).ready(function(){
 
 	$('.clean-hand').on('click', function(){
 		$('.hand-content').html('');
+		$('#total-outs').html('');
+		$('#outs-content').html('');
 	});
 
 	$('.clean-flop').on('click', function(){
@@ -55,10 +58,16 @@ $(document).ready(function(){
 
 	$('.clean-turn').on('click', function(){
 		$('.turn-content').html('');
+		$('#total-outs').html('');
+		$('#outs-content').html('');
+		getOuts();
 	});
 
 	$('.clean-river').on('click', function(){
 		$('.river-content').html('');
+		$('#total-outs').html('');
+		$('#outs-content').html('');
+		getOuts();
 	});
 	
 });
@@ -370,7 +379,6 @@ function isFlush(objArray){
 
 
 function isStraight(objArray){
-
 	var arraySequencia = [];
 	objArray.forEach(function(value){
 
@@ -586,6 +594,7 @@ function getOuts(){
 			if(!packCardIsInArray){
 
 				boardArrayObjectAux.push(packCard);
+				boardArrayObjectAux = ordenarArrayObject(boardArrayObjectAux);
 
 				var highHandAux = getHighHand(boardArrayObjectAux);
 				var highHandIndexAux = arrayHighHandScale.indexOf(highHandAux);
@@ -643,65 +652,74 @@ function getOuts(){
 		});
 
 		var html = "";
-		if(arrayPairOuts.length > 0){
-			html += "<div><h3>PairOuts</h3>";
-				arrayPairOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayTwoPairsOuts.length > 0){
-			html += "<div><h3>TwoPairsOuts</h3>";
-				arrayTwoPairsOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayTreeOfaKindOuts.length > 0){
-			html += "<div><h3>TreeOfaKindOuts</h3>";
-				arrayTreeOfaKindOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayStraightOuts.length > 0){
-			html += "<div><h3>StraightOuts</h3>";
-				arrayStraightOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayFlushOuts.length > 0){
-			html += "<div><h3>FlushOuts</h3>";
-				arrayFlushOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayFullHouseOuts.length > 0){
-			html += "<div><h3>FullHouseOuts</h3>";
-				arrayFullHouseOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayFourofakindOuts.length > 0){
-			html += "<div><h3>FourofakindOuts</h3>";
-				arrayFourofakindOuts.forEach(function(val){
+		if(arrayRoyalFlushOuts.length > 0){
+			var percentage = calculateOutsPercentage(boardArrayObject, arrayRoyalFlushOuts);
+			html += "<div><h3>Royal Flush Outs</h3> "+ percentage +"%";
+				arrayRoyalFlushOuts.forEach(function(val){
 					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
 				});
 			html += "</div>";
 		}
 		if(arrayStraightFlushOuts.length > 0){
-			html += "<div><h3>StraightFlushOuts</h3>";
+			var percentage = calculateOutsPercentage(boardArrayObject, arrayStraightFlushOuts);
+			html += "<div><h3>Straight FlushOuts</h3> "+ percentage +"%";
 				arrayStraightFlushOuts.forEach(function(val){
 					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
 				});
 			html += "</div>";
 		}
-		if(arrayRoyalFlushOuts.length > 0){
-			html += "<div><h3>RoyalFlushOuts</h3>";
-				arrayRoyalFlushOuts.forEach(function(val){
+		if(arrayFourofakindOuts.length > 0){
+			var percentage = calculateOutsPercentage(boardArrayObject, arrayFourofakindOuts);
+			html += "<div><h3>Four of a kind Outs</h3> "+ percentage +"%";
+				arrayFourofakindOuts.forEach(function(val){
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+				});
+			html += "</div>";
+		}
+		if(arrayFullHouseOuts.length > 0){
+			var percentage = calculateOutsPercentage(boardArrayObject, arrayFullHouseOuts);
+			html += "<div><h3>Full House Outs</h3> "+ percentage +"%";
+				arrayFullHouseOuts.forEach(function(val){
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+				});
+			html += "</div>";
+		}
+		if(arrayFlushOuts.length > 0){
+			var percentage = calculateOutsPercentage(boardArrayObject, arrayFlushOuts);
+			html += "<div><h3>Flush Outs</h3> "+ percentage +"%";
+				arrayFlushOuts.forEach(function(val){
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+				});
+			html += "</div>";
+		}
+		if(arrayStraightOuts.length > 0){
+			var percentage = calculateOutsPercentage(boardArrayObject, arrayStraightOuts);
+			html += "<div><h3>Straight Outs</h3> "+ percentage +"%";
+				arrayStraightOuts.forEach(function(val){
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+				});
+			html += "</div>";
+		}
+		if(arrayTreeOfaKindOuts.length > 0){
+			var percentage = calculateOutsPercentage(boardArrayObject, arrayTreeOfaKindOuts);
+			html += "<div><h3>Tree Of a Kind Outs</h3> "+ percentage +"%";
+				arrayTreeOfaKindOuts.forEach(function(val){
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+				});
+			html += "</div>";
+		}
+		if(arrayTwoPairsOuts.length > 0){
+			var percentage = calculateOutsPercentage(boardArrayObject, arrayTwoPairsOuts);
+			html += "<div><h3>Two Pairs Outs</h3> "+ percentage +"%";
+				arrayTwoPairsOuts.forEach(function(val){
+					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+				});
+			html += "</div>";
+		}
+		if(arrayPairOuts.length > 0){
+			var percentage = calculateOutsPercentage(boardArrayObject, arrayPairOuts);
+			html += "<div><h3>Pair Outs</h3> "+ percentage +"%";
+				arrayPairOuts.forEach(function(val){
 					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
 				});
 			html += "</div>";
@@ -771,4 +789,16 @@ function buildPackArrayObject(){
 		{id: 52, index: 13, value: "A", naipe: "clubs"}
 	];
 	return pack;
+}
+
+
+function calculateOutsPercentage(boardArrayObject, outsArrayObject){
+	var packTotalLength = 52;
+	var boardArrayLength = boardArrayObject.length;
+	var outsArrayLength = outsArrayObject.length;
+	
+	var diffTotal = packTotalLength - boardArrayLength;
+	result = ((100 * outsArrayLength) / diffTotal);
+	return result.toFixed(2);
+
 }
