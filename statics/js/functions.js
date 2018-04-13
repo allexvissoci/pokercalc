@@ -797,6 +797,16 @@ function calculateOutsPercentage(boardArrayObject, outsArrayObject){
 	var outsArrayLength = outsArrayObject.length;
 	
 	var diffTotal = packTotalLength - boardArrayLength;
+
+	emptyBoardPositionsCount = 0;
+	if($('.turn-content').children().length == 0){
+		emptyBoardPositionsCount++;
+	}
+	if($('.river-content').children().length == 0){
+		emptyBoardPositionsCount++;
+	}
+	outsArrayLength = outsArrayLength * emptyBoardPositionsCount;
+
 	result = ((100 * outsArrayLength) / diffTotal);
 	return result.toFixed(2);
 
