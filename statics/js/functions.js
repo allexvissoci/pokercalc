@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 		var inUse = isCardInUse($(this).children());
 		if(!inUse){
-			
+			$(this).addClass('inUse');
 			if($('.hand-content').children().length < 2){
 				$('.hand-content').append($(this).children()[0].outerHTML);
 			}else if($('.flop-content').children().length < 3){
@@ -18,9 +18,6 @@ $(document).ready(function(){
 			}
 		}
 
-	});
-	
-	$('.card').on('click', function(){
 		var handContentLength = $('.hand-content').children().length;
 		var flopContentLength = $('.flop-content').children().length;
 		if(handContentLength == 2 && flopContentLength == 3){
@@ -43,19 +40,33 @@ $(document).ready(function(){
 		$('#high-hand').html('');
 		$('.total-outs').html('');
 		$('#outs-content').html('');
+		$('.card').removeClass('inUse');
 	});
 
 	$('.clean-hand').on('click', function(){
+		var childrens = $('.hand-content').children();
+
+		$.each($('.hand-content').children(), function(index, val){
+			removeInUseClass($(val));
+		});
+		
 		$('.hand-content').html('');
 		$('.total-outs').html('');
 		$('#outs-content').html('');
+		
 	});
 
 	$('.clean-flop').on('click', function(){
+		$.each($('.flop-content').children(), function(index, val){
+			removeInUseClass($(val));
+		});
 		$('.flop-content').html('');
 	});
 
 	$('.clean-turn').on('click', function(){
+		$.each($('.turn-content').children(), function(index, val){
+			removeInUseClass($(val));
+		});
 		$('.turn-content').html('');
 		$('.total-outs').html('');
 		$('#outs-content').html('');
@@ -63,6 +74,9 @@ $(document).ready(function(){
 	});
 
 	$('.clean-river').on('click', function(){
+		$.each($('.river-content').children(), function(index, val){
+			removeInUseClass($(val));
+		});
 		$('.river-content').html('');
 		$('.total-outs').html('');
 		$('#outs-content').html('');
@@ -71,6 +85,194 @@ $(document).ready(function(){
 	
 });
 
+var sumKeyCode = '';
+$(document).ready(function(){
+
+	addEventListener("keydown", function (e) {
+		var arrayKey = [98, 99, 100, 101, 102, 103, 104, 105, 97, 96, 74, 81, 75, 65, 13, 8, 107, 111, 109, 106];
+		var boardArrayObject = buildBoardArrayObject();
+		if($.inArray(e.keyCode, arrayKey) > -1 && boardArrayObject.length < 7){
+
+			if(e.keyCode != 13 && e.keyCode != 8){
+				sumKeyCode = sumKeyCode + e.keyCode.toString();
+			}
+			if(e.keyCode == 8){
+				sumKeyCode = '';
+			}
+			setTimeout(function(){
+				
+				if(sumKeyCode == 98107){
+					$('.card-id-1').click();
+				}
+				if(sumKeyCode == 98111){
+					$('.card-id-2').click();
+				}
+				if(sumKeyCode == 98109){
+					$('.card-id-3').click();
+				}
+				if(sumKeyCode == 98106){
+					$('.card-id-4').click();
+				}
+				if(sumKeyCode == 99107){
+					$('.card-id-5').click();
+				}
+				if(sumKeyCode == 99111){
+					$('.card-id-6').click();
+				}
+				if(sumKeyCode == 99109){
+					$('.card-id-7').click();
+				}
+				if(sumKeyCode == 99106){
+					$('.card-id-8').click();
+				}
+				if(sumKeyCode == 100107){
+					$('.card-id-9').click();
+				}
+				if(sumKeyCode == 100111){
+					$('.card-id-10').click();
+				}
+				if(sumKeyCode == 100109){
+					$('.card-id-11').click();
+				}
+				if(sumKeyCode == 100106){
+					$('.card-id-12').click();
+				}
+				if(sumKeyCode == 101107){
+					$('.card-id-13').click();
+				}
+				if(sumKeyCode == 101111){
+					$('.card-id-14').click();
+				}
+				if(sumKeyCode == 101109){
+					$('.card-id-15').click();
+				}
+				if(sumKeyCode == 101106){
+					$('.card-id-16').click();
+				}
+				if(sumKeyCode == 102107){
+					$('.card-id-17').click();
+				}
+				if(sumKeyCode == 102111){
+					$('.card-id-18').click();
+				}
+				if(sumKeyCode == 102109){
+					$('.card-id-19').click();
+				}
+				if(sumKeyCode == 102106){
+					$('.card-id-20').click();
+				}
+				if(sumKeyCode == 103107){
+					$('.card-id-21').click();
+				}
+				if(sumKeyCode == 103111){
+					$('.card-id-22').click();
+				}
+				if(sumKeyCode == 103109){
+					$('.card-id-23').click();
+				}
+				if(sumKeyCode == 103106){
+					$('.card-id-24').click();
+				}
+				if(sumKeyCode == 104107){
+					$('.card-id-25').click();
+				}
+				if(sumKeyCode == 104111){
+					$('.card-id-26').click();
+				}
+				if(sumKeyCode == 104109){
+					$('.card-id-27').click();
+				}
+				if(sumKeyCode == 104106){
+					$('.card-id-28').click();
+				}
+				if(sumKeyCode == 105107){
+					$('.card-id-29').click();
+				}
+				if(sumKeyCode == 105111){
+					$('.card-id-30').click();
+				}
+				if(sumKeyCode == 105109){
+					$('.card-id-31').click();
+				}
+				if(sumKeyCode == 105106){
+					$('.card-id-32').click();
+				}
+				if(sumKeyCode == 9796107){
+					$('.card-id-33').click();
+				}
+				if(sumKeyCode == 9796111){
+					$('.card-id-34').click();
+				}
+				if(sumKeyCode == 9796109){
+					$('.card-id-35').click();
+				}
+				if(sumKeyCode == 9796106){
+					$('.card-id-36').click();
+				}
+				if(sumKeyCode == 74107){
+					$('.card-id-37').click();
+				}
+				if(sumKeyCode == 74111){
+					$('.card-id-38').click();
+				}
+				if(sumKeyCode == 74109){
+					$('.card-id-39').click();
+				}
+				if(sumKeyCode == 74106){
+					$('.card-id-40').click();
+				}
+				if(sumKeyCode == 81107){
+					$('.card-id-41').click();
+				}
+				if(sumKeyCode == 81111){
+					$('.card-id-42').click();
+				}
+				if(sumKeyCode == 81109){
+					$('.card-id-43').click();
+				}
+				if(sumKeyCode == 81106){
+					$('.card-id-44').click();
+				}
+				if(sumKeyCode == 75107){
+					$('.card-id-45').click();
+				}
+				if(sumKeyCode == 75111){
+					$('.card-id-46').click();
+				}
+				if(sumKeyCode == 75109){
+					$('.card-id-47').click();
+				}
+				if(sumKeyCode == 75106){
+					$('.card-id-48').click();
+				}
+				if(sumKeyCode == 65107){
+					$('.card-id-49').click();
+				}
+				if(sumKeyCode == 65111){
+					$('.card-id-50').click();
+				}
+				if(sumKeyCode == 65109){
+					$('.card-id-51').click();
+				}
+				if(sumKeyCode == 65106){
+					$('.card-id-52').click();
+				}
+				sumKeyCode = '';
+
+			},500);
+		}
+
+	});
+
+});
+
+function removeInUseClass(element){
+	$.each($('.card').children(), function(index, val){
+		if($(element).data('id') == $(val).data('id')){
+			$($('.card')[index]).removeClass('inUse');
+		}
+	});
+}
 
 function isCardInUse(element){
 	
@@ -809,5 +1011,4 @@ function calculateOutsPercentage(boardArrayObject, outsArrayObject){
 
 	result = ((100 * outsArrayLength) / diffTotal);
 	return result.toFixed(2);
-
 }
