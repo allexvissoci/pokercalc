@@ -3,7 +3,8 @@ $(document).ready(function(){
 	$('.card').on('click', function(){
 
 		var inUse = isCardInUse($(this).children());
-		if(!inUse){
+		var boardArrayObject = buildBoardArrayObject();
+		if(!inUse && boardArrayObject.length < 7){
 			$(this).addClass('inUse');
 			if($('.hand-content').children().length < 2){
 				$('.hand-content').append($(this).children()[0].outerHTML);
@@ -16,6 +17,19 @@ $(document).ready(function(){
 					$('.river-content').append($(this).children()[0].outerHTML);
 				}
 			}
+		}else{
+			$(this).removeClass('inUse');
+			var arrClasses = $(this).children().attr('class').split(' ');
+			var classes = '';
+			$.each(arrClasses, function(index, val){
+				classes += '.'+val;
+			});
+			$('.hand-content '+classes).remove();
+			$('.flop-content '+classes).remove();
+			$('.turn-content '+classes).remove();
+			$('.river-content '+classes).remove();
+			$('#high-hand').html('');
+			getOuts();
 		}
 
 		var handContentLength = $('.hand-content').children().length;
@@ -100,165 +114,7 @@ $(document).ready(function(){
 				sumKeyCode = '';
 			}
 			setTimeout(function(){
-				
-				if(sumKeyCode == 98107){
-					$('.card-id-1').click();
-				}
-				if(sumKeyCode == 98111){
-					$('.card-id-2').click();
-				}
-				if(sumKeyCode == 98109){
-					$('.card-id-3').click();
-				}
-				if(sumKeyCode == 98106){
-					$('.card-id-4').click();
-				}
-				if(sumKeyCode == 99107){
-					$('.card-id-5').click();
-				}
-				if(sumKeyCode == 99111){
-					$('.card-id-6').click();
-				}
-				if(sumKeyCode == 99109){
-					$('.card-id-7').click();
-				}
-				if(sumKeyCode == 99106){
-					$('.card-id-8').click();
-				}
-				if(sumKeyCode == 100107){
-					$('.card-id-9').click();
-				}
-				if(sumKeyCode == 100111){
-					$('.card-id-10').click();
-				}
-				if(sumKeyCode == 100109){
-					$('.card-id-11').click();
-				}
-				if(sumKeyCode == 100106){
-					$('.card-id-12').click();
-				}
-				if(sumKeyCode == 101107){
-					$('.card-id-13').click();
-				}
-				if(sumKeyCode == 101111){
-					$('.card-id-14').click();
-				}
-				if(sumKeyCode == 101109){
-					$('.card-id-15').click();
-				}
-				if(sumKeyCode == 101106){
-					$('.card-id-16').click();
-				}
-				if(sumKeyCode == 102107){
-					$('.card-id-17').click();
-				}
-				if(sumKeyCode == 102111){
-					$('.card-id-18').click();
-				}
-				if(sumKeyCode == 102109){
-					$('.card-id-19').click();
-				}
-				if(sumKeyCode == 102106){
-					$('.card-id-20').click();
-				}
-				if(sumKeyCode == 103107){
-					$('.card-id-21').click();
-				}
-				if(sumKeyCode == 103111){
-					$('.card-id-22').click();
-				}
-				if(sumKeyCode == 103109){
-					$('.card-id-23').click();
-				}
-				if(sumKeyCode == 103106){
-					$('.card-id-24').click();
-				}
-				if(sumKeyCode == 104107){
-					$('.card-id-25').click();
-				}
-				if(sumKeyCode == 104111){
-					$('.card-id-26').click();
-				}
-				if(sumKeyCode == 104109){
-					$('.card-id-27').click();
-				}
-				if(sumKeyCode == 104106){
-					$('.card-id-28').click();
-				}
-				if(sumKeyCode == 105107){
-					$('.card-id-29').click();
-				}
-				if(sumKeyCode == 105111){
-					$('.card-id-30').click();
-				}
-				if(sumKeyCode == 105109){
-					$('.card-id-31').click();
-				}
-				if(sumKeyCode == 105106){
-					$('.card-id-32').click();
-				}
-				if(sumKeyCode == 9796107){
-					$('.card-id-33').click();
-				}
-				if(sumKeyCode == 9796111){
-					$('.card-id-34').click();
-				}
-				if(sumKeyCode == 9796109){
-					$('.card-id-35').click();
-				}
-				if(sumKeyCode == 9796106){
-					$('.card-id-36').click();
-				}
-				if(sumKeyCode == 74107){
-					$('.card-id-37').click();
-				}
-				if(sumKeyCode == 74111){
-					$('.card-id-38').click();
-				}
-				if(sumKeyCode == 74109){
-					$('.card-id-39').click();
-				}
-				if(sumKeyCode == 74106){
-					$('.card-id-40').click();
-				}
-				if(sumKeyCode == 81107){
-					$('.card-id-41').click();
-				}
-				if(sumKeyCode == 81111){
-					$('.card-id-42').click();
-				}
-				if(sumKeyCode == 81109){
-					$('.card-id-43').click();
-				}
-				if(sumKeyCode == 81106){
-					$('.card-id-44').click();
-				}
-				if(sumKeyCode == 75107){
-					$('.card-id-45').click();
-				}
-				if(sumKeyCode == 75111){
-					$('.card-id-46').click();
-				}
-				if(sumKeyCode == 75109){
-					$('.card-id-47').click();
-				}
-				if(sumKeyCode == 75106){
-					$('.card-id-48').click();
-				}
-				if(sumKeyCode == 65107){
-					$('.card-id-49').click();
-				}
-				if(sumKeyCode == 65111){
-					$('.card-id-50').click();
-				}
-				if(sumKeyCode == 65109){
-					$('.card-id-51').click();
-				}
-				if(sumKeyCode == 65106){
-					$('.card-id-52').click();
-				}
-				sumKeyCode = '';
-
+				checkClickedKey(sumKeyCode);
 			},500);
 		}
 
@@ -800,137 +656,232 @@ function getOuts(){
 				var highHandAux = getHighHand(boardArrayObjectAux);
 				var highHandIndexAux = arrayHighHandScale.indexOf(highHandAux);
 
-				boardArrayObjectAux = [];
 				if(highHandIndexAux > highHandIndex){
 
-					if(highHandAux == "Royal Flush"){
+					var royalFlush = isRoyalFlush(boardArrayObjectAux);
+					if(royalFlush){
 						if(arrayRoyalFlushOuts.indexOf(packCard) == -1){
 							arrayRoyalFlushOuts.push(packCard);
 						}
 					}
-					if(highHandAux == "Straight Flush"){
+					var straightFlush = isStraightFlush(boardArrayObjectAux);
+					if(straightFlush){
 						if(arrayStraightFlushOuts.indexOf(packCard) == -1){
 							arrayStraightFlushOuts.push(packCard);
 						}
 					}
-					if(highHandAux == "Four of a kind"){
+					var FourOfaKind = isFourOfaKind(boardArrayObjectAux);
+					if(FourOfaKind){
 						if(arrayFourofakindOuts.indexOf(packCard) == -1){
 							arrayFourofakindOuts.push(packCard);
 						}
 					}
-					if(highHandAux == "Full House"){
+					var FullHouse = isFullHouse(boardArrayObjectAux);
+					if(FullHouse){
 						if(arrayFullHouseOuts.indexOf(packCard) == -1){
 							arrayFullHouseOuts.push(packCard);
 						}
 					}
-					if(highHandAux == "Flush"){
+					var Flush = isFlush(boardArrayObjectAux);
+					if(Flush){
 						if(arrayFlushOuts.indexOf(packCard) == -1){
 							arrayFlushOuts.push(packCard);
 						}
 					}
-					if(highHandAux == "Straight"){
+					var Straight = isStraight(boardArrayObjectAux);
+					if(Straight){
 						if(arrayStraightOuts.indexOf(packCard) == -1){
 							arrayStraightOuts.push(packCard);
 						}
 					}
-					if(highHandAux == "Tree Of a Kind"){
+					var TreeOfaKind = isTreeOfaKind(boardArrayObjectAux);
+					if(TreeOfaKind){
 						if(arrayTreeOfaKindOuts.indexOf(packCard) == -1){
 							arrayTreeOfaKindOuts.push(packCard);
 						}
 					}
-					if(highHandAux == "Two Pairs"){
+					var TwoPairs = isTwoPairs(boardArrayObjectAux);
+					if(TwoPairs){
 						if(arrayTwoPairsOuts.indexOf(packCard) == -1){
 							arrayTwoPairsOuts.push(packCard);
 						}
 					}
-					if(highHandAux == "Pair"){
+					var Pair = isPair(boardArrayObjectAux);
+					if(Pair){
 						if(arrayPairOuts.indexOf(packCard) == -1){
 							arrayPairOuts.push(packCard);
 						}
 					}
 				}
+				boardArrayObjectAux = [];
 			}
 		});
 
-		var html = "";
-		if(arrayRoyalFlushOuts.length > 0){
-			var percentage = calculateOutsPercentage(boardArrayObject, arrayRoyalFlushOuts);
-			html += "<div><div><label>Royal Flush Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
-				arrayRoyalFlushOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayStraightFlushOuts.length > 0){
-			var percentage = calculateOutsPercentage(boardArrayObject, arrayStraightFlushOuts);
-			html += "<div><div><label>Straight FlushOuts</label> <span class='percentage'>"+ percentage +"%</span></div>";
-				arrayStraightFlushOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayFourofakindOuts.length > 0){
-			var percentage = calculateOutsPercentage(boardArrayObject, arrayFourofakindOuts);
-			html += "<div><div><label>Four of a kind Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
-				arrayFourofakindOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayFullHouseOuts.length > 0){
-			var percentage = calculateOutsPercentage(boardArrayObject, arrayFullHouseOuts);
-			html += "<div><div><label>Full House Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
-				arrayFullHouseOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayFlushOuts.length > 0){
-			var percentage = calculateOutsPercentage(boardArrayObject, arrayFlushOuts);
-			html += "<div><div><label>Flush Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
-				arrayFlushOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayStraightOuts.length > 0){
-			var percentage = calculateOutsPercentage(boardArrayObject, arrayStraightOuts);
-			html += "<div><div><label>Straight Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
-				arrayStraightOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayTreeOfaKindOuts.length > 0){
-			var percentage = calculateOutsPercentage(boardArrayObject, arrayTreeOfaKindOuts);
-			html += "<div><div><label>Tree Of a Kind Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
-				arrayTreeOfaKindOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayTwoPairsOuts.length > 0){
-			var percentage = calculateOutsPercentage(boardArrayObject, arrayTwoPairsOuts);
-			html += "<div><div><label>Two Pairs Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
-				arrayTwoPairsOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		if(arrayPairOuts.length > 0){
-			var percentage = calculateOutsPercentage(boardArrayObject, arrayPairOuts);
-			html += "<div><div><label>Pair Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
-				arrayPairOuts.forEach(function(val){
-					html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
-				});
-			html += "</div>";
-		}
-		
-		var totalOuts = arrayPairOuts.length + arrayTwoPairsOuts.length + arrayTreeOfaKindOuts.length +	arrayStraightOuts.length +	arrayFlushOuts.length +	arrayFullHouseOuts.length +	arrayFourofakindOuts.length + arrayStraightFlushOuts.length + arrayRoyalFlushOuts.length; 
+		var html = buildOutsHtml(boardArrayObject, arrayRoyalFlushOuts, arrayStraightFlushOuts, arrayFourofakindOuts, arrayFullHouseOuts, arrayFlushOuts, arrayStraightOuts, arrayTreeOfaKindOuts, arrayTwoPairsOuts, arrayPairOuts);
+	
+		var arrayOuts = countTotalOuts(arrayRoyalFlushOuts, arrayStraightFlushOuts, arrayFourofakindOuts, arrayFullHouseOuts, arrayFlushOuts, arrayStraightOuts, arrayTreeOfaKindOuts, arrayTwoPairsOuts, arrayPairOuts);
+
+		var totalOuts = arrayOuts.length;
 		$('.total-outs').html(totalOuts);
 		$('#outs-content').html(html);
 	}
 	
+}
+
+function calculateOutsPercentage(boardArrayObject, outsArrayObject){
+	var packTotalLength = 52;
+	var boardArrayLength = boardArrayObject.length;
+	var outsArrayLength = outsArrayObject.length;
+	
+	var diffTotal = packTotalLength - boardArrayLength;
+
+	emptyBoardPositionsCount = 0;
+	if($('.turn-content').children().length == 0){
+		emptyBoardPositionsCount++;
+	}
+	if($('.river-content').children().length == 0){
+		emptyBoardPositionsCount++;
+	}
+	outsArrayLength = outsArrayLength * emptyBoardPositionsCount;
+
+	result = ((100 * outsArrayLength) / diffTotal);
+	return result.toFixed(2);
+}
+
+function buildOutsHtml(boardArrayObject, arrayRoyalFlushOuts, arrayStraightFlushOuts, arrayFourofakindOuts, arrayFullHouseOuts, arrayFlushOuts, arrayStraightOuts, arrayTreeOfaKindOuts, arrayTwoPairsOuts, arrayPairOuts){
+	var html = "";
+	if(arrayRoyalFlushOuts.length > 0){
+		var percentage = calculateOutsPercentage(boardArrayObject, arrayRoyalFlushOuts);
+		html += "<div><div><label>Royal Flush Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
+			arrayRoyalFlushOuts.forEach(function(val){
+				html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+			});
+		html += "</div>";
+	}
+	if(arrayStraightFlushOuts.length > 0){
+		var percentage = calculateOutsPercentage(boardArrayObject, arrayStraightFlushOuts);
+		html += "<div><div><label>Straight FlushOuts</label> <span class='percentage'>"+ percentage +"%</span></div>";
+			arrayStraightFlushOuts.forEach(function(val){
+				html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+			});
+		html += "</div>";
+	}
+	if(arrayFourofakindOuts.length > 0){
+		var percentage = calculateOutsPercentage(boardArrayObject, arrayFourofakindOuts);
+		html += "<div><div><label>Four of a kind Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
+			arrayFourofakindOuts.forEach(function(val){
+				html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+			});
+		html += "</div>";
+	}
+	if(arrayFullHouseOuts.length > 0){
+		var percentage = calculateOutsPercentage(boardArrayObject, arrayFullHouseOuts);
+		html += "<div><div><label>Full House Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
+			arrayFullHouseOuts.forEach(function(val){
+				html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+			});
+		html += "</div>";
+	}
+	if(arrayFlushOuts.length > 0){
+		var percentage = calculateOutsPercentage(boardArrayObject, arrayFlushOuts);
+		html += "<div><div><label>Flush Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
+			arrayFlushOuts.forEach(function(val){
+				html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+			});
+		html += "</div>";
+	}
+	if(arrayStraightOuts.length > 0){
+		var percentage = calculateOutsPercentage(boardArrayObject, arrayStraightOuts);
+		html += "<div><div><label>Straight Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
+			arrayStraightOuts.forEach(function(val){
+				html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+			});
+		html += "</div>";
+	}
+	if(arrayTreeOfaKindOuts.length > 0){
+		var percentage = calculateOutsPercentage(boardArrayObject, arrayTreeOfaKindOuts);
+		html += "<div><div><label>Tree Of a Kind Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
+			arrayTreeOfaKindOuts.forEach(function(val){
+				html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+			});
+		html += "</div>";
+	}
+	if(arrayTwoPairsOuts.length > 0){
+		var percentage = calculateOutsPercentage(boardArrayObject, arrayTwoPairsOuts);
+		html += "<div><div><label>Two Pairs Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
+			arrayTwoPairsOuts.forEach(function(val){
+				html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+			});
+		html += "</div>";
+	}
+	if(arrayPairOuts.length > 0){
+		var percentage = calculateOutsPercentage(boardArrayObject, arrayPairOuts);
+		html += "<div><div><label>Pair Outs</label> <span class='percentage'>"+ percentage +"%</span></div>";
+			arrayPairOuts.forEach(function(val){
+				html += "<label class='"+val['value']+" "+val['naipe']+"' data-id='"+val['id']+"' data-index='"+val['index']+"' data-value='"+val['value']+"' data-naipe='"+val['naipe']+"'>"+val['value']+"&"+val['naipe']+";</label>";
+			});
+		html += "</div>";
+	}
+	return html;
+}
+
+function countTotalOuts(arrayRoyalFlushOuts, arrayStraightFlushOuts, arrayFourofakindOuts, arrayFullHouseOuts, arrayFlushOuts, arrayStraightOuts, arrayTreeOfaKindOuts, arrayTwoPairsOuts, arrayPairOuts){
+	var arrayOuts = [];
+
+	$.each(arrayPairOuts, function(index, val){
+		if(arrayOuts.indexOf(val) == -1){
+			arrayOuts.push(val);
+		}
+	});
+
+	$.each(arrayTwoPairsOuts, function(index, val){
+		if(arrayOuts.indexOf(val) == -1){
+			arrayOuts.push(val);
+		}
+	});
+
+	$.each(arrayTreeOfaKindOuts, function(index, val){
+		if(arrayOuts.indexOf(val) == -1){
+			arrayOuts.push(val);
+		}
+	});
+
+	$.each(arrayStraightOuts, function(index, val){
+		if(arrayOuts.indexOf(val) == -1){
+			arrayOuts.push(val);
+		}
+	});
+
+	$.each(arrayFlushOuts, function(index, val){
+		if(arrayOuts.indexOf(val) == -1){
+			arrayOuts.push(val);
+		}
+	});
+
+	$.each(arrayFullHouseOuts, function(index, val){
+		if(arrayOuts.indexOf(val) == -1){
+			arrayOuts.push(val);
+		}
+	});
+
+	$.each(arrayFourofakindOuts, function(index, val){
+		if(arrayOuts.indexOf(val) == -1){
+			arrayOuts.push(val);
+		}
+	});
+
+	$.each(arrayStraightFlushOuts, function(index, val){
+		if(arrayOuts.indexOf(val) == -1){
+			arrayOuts.push(val);
+		}
+	});
+
+	$.each(arrayRoyalFlushOuts, function(index, val){
+		if(arrayOuts.indexOf(val) == -1){
+			arrayOuts.push(val);
+		}
+	});
+	return arrayOuts;
 }
 
 
@@ -993,22 +944,162 @@ function buildPackArrayObject(){
 }
 
 
-function calculateOutsPercentage(boardArrayObject, outsArrayObject){
-	var packTotalLength = 52;
-	var boardArrayLength = boardArrayObject.length;
-	var outsArrayLength = outsArrayObject.length;
-	
-	var diffTotal = packTotalLength - boardArrayLength;
-
-	emptyBoardPositionsCount = 0;
-	if($('.turn-content').children().length == 0){
-		emptyBoardPositionsCount++;
+function checkClickedKey(sumKeyCode){
+	if(sumKeyCode == 98107){
+		$('.card-id-1').click();
 	}
-	if($('.river-content').children().length == 0){
-		emptyBoardPositionsCount++;
+	if(sumKeyCode == 98111){
+		$('.card-id-2').click();
 	}
-	outsArrayLength = outsArrayLength * emptyBoardPositionsCount;
-
-	result = ((100 * outsArrayLength) / diffTotal);
-	return result.toFixed(2);
+	if(sumKeyCode == 98109){
+		$('.card-id-3').click();
+	}
+	if(sumKeyCode == 98106){
+		$('.card-id-4').click();
+	}
+	if(sumKeyCode == 99107){
+		$('.card-id-5').click();
+	}
+	if(sumKeyCode == 99111){
+		$('.card-id-6').click();
+	}
+	if(sumKeyCode == 99109){
+		$('.card-id-7').click();
+	}
+	if(sumKeyCode == 99106){
+		$('.card-id-8').click();
+	}
+	if(sumKeyCode == 100107){
+		$('.card-id-9').click();
+	}
+	if(sumKeyCode == 100111){
+		$('.card-id-10').click();
+	}
+	if(sumKeyCode == 100109){
+		$('.card-id-11').click();
+	}
+	if(sumKeyCode == 100106){
+		$('.card-id-12').click();
+	}
+	if(sumKeyCode == 101107){
+		$('.card-id-13').click();
+	}
+	if(sumKeyCode == 101111){
+		$('.card-id-14').click();
+	}
+	if(sumKeyCode == 101109){
+		$('.card-id-15').click();
+	}
+	if(sumKeyCode == 101106){
+		$('.card-id-16').click();
+	}
+	if(sumKeyCode == 102107){
+		$('.card-id-17').click();
+	}
+	if(sumKeyCode == 102111){
+		$('.card-id-18').click();
+	}
+	if(sumKeyCode == 102109){
+		$('.card-id-19').click();
+	}
+	if(sumKeyCode == 102106){
+		$('.card-id-20').click();
+	}
+	if(sumKeyCode == 103107){
+		$('.card-id-21').click();
+	}
+	if(sumKeyCode == 103111){
+		$('.card-id-22').click();
+	}
+	if(sumKeyCode == 103109){
+		$('.card-id-23').click();
+	}
+	if(sumKeyCode == 103106){
+		$('.card-id-24').click();
+	}
+	if(sumKeyCode == 104107){
+		$('.card-id-25').click();
+	}
+	if(sumKeyCode == 104111){
+		$('.card-id-26').click();
+	}
+	if(sumKeyCode == 104109){
+		$('.card-id-27').click();
+	}
+	if(sumKeyCode == 104106){
+		$('.card-id-28').click();
+	}
+	if(sumKeyCode == 105107){
+		$('.card-id-29').click();
+	}
+	if(sumKeyCode == 105111){
+		$('.card-id-30').click();
+	}
+	if(sumKeyCode == 105109){
+		$('.card-id-31').click();
+	}
+	if(sumKeyCode == 105106){
+		$('.card-id-32').click();
+	}
+	if(sumKeyCode == 9796107){
+		$('.card-id-33').click();
+	}
+	if(sumKeyCode == 9796111){
+		$('.card-id-34').click();
+	}
+	if(sumKeyCode == 9796109){
+		$('.card-id-35').click();
+	}
+	if(sumKeyCode == 9796106){
+		$('.card-id-36').click();
+	}
+	if(sumKeyCode == 74107){
+		$('.card-id-37').click();
+	}
+	if(sumKeyCode == 74111){
+		$('.card-id-38').click();
+	}
+	if(sumKeyCode == 74109){
+		$('.card-id-39').click();
+	}
+	if(sumKeyCode == 74106){
+		$('.card-id-40').click();
+	}
+	if(sumKeyCode == 81107){
+		$('.card-id-41').click();
+	}
+	if(sumKeyCode == 81111){
+		$('.card-id-42').click();
+	}
+	if(sumKeyCode == 81109){
+		$('.card-id-43').click();
+	}
+	if(sumKeyCode == 81106){
+		$('.card-id-44').click();
+	}
+	if(sumKeyCode == 75107){
+		$('.card-id-45').click();
+	}
+	if(sumKeyCode == 75111){
+		$('.card-id-46').click();
+	}
+	if(sumKeyCode == 75109){
+		$('.card-id-47').click();
+	}
+	if(sumKeyCode == 75106){
+		$('.card-id-48').click();
+	}
+	if(sumKeyCode == 65107){
+		$('.card-id-49').click();
+	}
+	if(sumKeyCode == 65111){
+		$('.card-id-50').click();
+	}
+	if(sumKeyCode == 65109){
+		$('.card-id-51').click();
+	}
+	if(sumKeyCode == 65106){
+		$('.card-id-52').click();
+	}
+	sumKeyCode = '';
 }

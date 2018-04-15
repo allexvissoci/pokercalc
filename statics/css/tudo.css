@@ -34,6 +34,7 @@ tr:nth-child(even) {
 	text-align: left;
 	padding: 8px;
 	display: inline-block;
+	background-color: #fff;
 }
 
 .pack {
@@ -51,4 +52,8 @@ tr:nth-child(even) {
 .inUse{
 	opacity: 0.8;
     background: #827c7c;
+}
+
+#tudao{
+	background-color: rgba(238, 238, 238, 0.25);
 }
