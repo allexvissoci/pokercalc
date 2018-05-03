@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$('.card').on('click', function(){
+	$('.cards').on('click', function(){
 
 		var inUse = isCardInUse($(this).children());
 		var boardArrayObject = buildBoardArrayObject();
@@ -12,7 +12,7 @@ $(document).ready(function(){
 				$('.flop-content').append($(this).children()[0].outerHTML);
 			}else{
 				if($('.turn-content').children().length < 1){
-					$('.turn-content').append($(this).children()[0].outerHTML);	
+					$('.turn-content').append($(this).children()[0].outerHTML);
 				}else if($('.river-content').children().length < 1){
 					$('.river-content').append($(this).children()[0].outerHTML);
 				}
@@ -29,6 +29,7 @@ $(document).ready(function(){
 			$('.turn-content '+classes).remove();
 			$('.river-content '+classes).remove();
 			$('#high-hand').html('');
+			$('#high-hand').parent().addClass('hidden');
 			getOuts();
 		}
 
@@ -38,8 +39,10 @@ $(document).ready(function(){
 			var boardArrayObject = buildBoardArrayObject();
 			var highHand = getHighHand(boardArrayObject);
 			$("#high-hand").html(highHand);
+			$('#high-hand').parent().removeClass('hidden');
 
 			$('.total-outs').html('');
+			$('.total-outs').parent().addClass('hidden');
 			$('#outs-content').html('');
 			getOuts();
 		}
@@ -52,51 +55,13 @@ $(document).ready(function(){
 		$('.turn-content').html('');
 		$('.river-content').html('');
 		$('#high-hand').html('');
+		$('#high-hand').parent().addClass('hidden');
 		$('.total-outs').html('');
+		$('.total-outs').parent().addClass('hidden');
 		$('#outs-content').html('');
-		$('.card').removeClass('inUse');
+		$('.cards').removeClass('inUse');
 	});
 
-	$('.clean-hand').on('click', function(){
-		var childrens = $('.hand-content').children();
-
-		$.each($('.hand-content').children(), function(index, val){
-			removeInUseClass($(val));
-		});
-		
-		$('.hand-content').html('');
-		$('.total-outs').html('');
-		$('#outs-content').html('');
-		
-	});
-
-	$('.clean-flop').on('click', function(){
-		$.each($('.flop-content').children(), function(index, val){
-			removeInUseClass($(val));
-		});
-		$('.flop-content').html('');
-	});
-
-	$('.clean-turn').on('click', function(){
-		$.each($('.turn-content').children(), function(index, val){
-			removeInUseClass($(val));
-		});
-		$('.turn-content').html('');
-		$('.total-outs').html('');
-		$('#outs-content').html('');
-		getOuts();
-	});
-
-	$('.clean-river').on('click', function(){
-		$.each($('.river-content').children(), function(index, val){
-			removeInUseClass($(val));
-		});
-		$('.river-content').html('');
-		$('.total-outs').html('');
-		$('#outs-content').html('');
-		getOuts();
-	});
-	
 });
 
 var sumKeyCode = '';
@@ -105,7 +70,7 @@ $(document).ready(function(){
 	addEventListener("keydown", function (e) {
 		var arrayKey = [98, 99, 100, 101, 102, 103, 104, 105, 97, 96, 74, 81, 75, 65, 13, 8, 107, 111, 109, 106];
 		var boardArrayObject = buildBoardArrayObject();
-		if($.inArray(e.keyCode, arrayKey) > -1 && boardArrayObject.length < 7){
+		if($.inArray(e.keyCode, arrayKey) > -1){
 
 			if(e.keyCode != 13 && e.keyCode != 8){
 				sumKeyCode = sumKeyCode + e.keyCode.toString();
@@ -115,6 +80,7 @@ $(document).ready(function(){
 			}
 			setTimeout(function(){
 				checkClickedKey(sumKeyCode);
+				sumKeyCode = '';
 			},500);
 		}
 
@@ -123,20 +89,20 @@ $(document).ready(function(){
 });
 
 function removeInUseClass(element){
-	$.each($('.card').children(), function(index, val){
+	$.each($('.cards').children(), function(index, val){
 		if($(element).data('id') == $(val).data('id')){
-			$($('.card')[index]).removeClass('inUse');
+			$($('.cards')[index]).removeClass('inUse');
 		}
 	});
 }
 
 function isCardInUse(element){
-	
+
 	var card = element[0];
 	var inUse;
 	$.each($('.hand-content').children(), function(index, val){
 		if(
-			$(card).data('value') == $(val).data('value') 
+			$(card).data('value') == $(val).data('value')
 			&& $(card).data('naipe') == $(val).data('naipe')
 		){
 			inUse = true;
@@ -145,7 +111,7 @@ function isCardInUse(element){
 
 	$.each($('.flop-content').children(), function(index, val){
 		if(
-			$(card).data('value') == $(val).data('value') 
+			$(card).data('value') == $(val).data('value')
 			&& $(card).data('naipe') == $(val).data('naipe')
 		){
 			inUse = true;
@@ -154,7 +120,7 @@ function isCardInUse(element){
 
 	$.each($('.turn-content').children(), function(index, val){
 		if(
-			$(card).data('value') == $(val).data('value') 
+			$(card).data('value') == $(val).data('value')
 			&& $(card).data('naipe') == $(val).data('naipe')
 		){
 			inUse = true;
@@ -163,7 +129,7 @@ function isCardInUse(element){
 
 	$.each($('.river-content').children(), function(index, val){
 		if(
-			$(card).data('value') == $(val).data('value') 
+			$(card).data('value') == $(val).data('value')
 			&& $(card).data('naipe') == $(val).data('naipe')
 		){
 			inUse = true;
@@ -241,7 +207,7 @@ function getHighHand(boardArrayObject){
 	if(quadra){
 		return "Four of a kind";
 	}
-	 
+
 	fullHouse = isFullHouse(boardArrayObject);
 	if(fullHouse){
 		return "Full House";
@@ -296,7 +262,7 @@ function isRoyalFlush(boardArrayObject){
 	if(sequenceArray){
 		var flush = isFlush(sequenceArray);
 		if(
-			flush 
+			flush
 			&&	sequenceArray[0]['index'] === 9
 			&&	sequenceArray[1]['index'] === 10
 			&&	sequenceArray[2]['index'] === 11
@@ -356,7 +322,7 @@ function isFullHouse(boardArrayObject){
 		}
 
 	});
-	
+
 	if(arrayTreeOfaKind.length === 3){
 		var arraySecondPair = [];
 		boardArrayObject.forEach(function(val){
@@ -431,7 +397,7 @@ function isFlush(objArray){
 		return true;
 	}
 	return false;
-	
+
 }
 
 
@@ -447,20 +413,20 @@ function isStraight(objArray){
 		}else{
 			arraySequencia.push(value);
 		}
-		
+
 		objArray.forEach(function(value2){
 			var indice2 = parseInt(value2['index']);
 			if((indice1 !== indice2) && ((parseInt(arraySequencia[arraySequencia.length -1 ]['index']) + 1) === indice2) ){
 				arraySequencia.push(value2);
 			}
-			
+
 		});
-		
+
 		if(arraySequencia.length < 5 ){
 			arraySequencia = [];
 		}
 	});
-	
+
 	if(arraySequencia.length >= 5 ){
 		return arraySequencia;
 	}else{
@@ -497,7 +463,7 @@ function isTwoPairs(boardArrayObject){
 		}
 
 	});
-	
+
 	if(arrayFirstPair.length === 2){
 		var arraySecondPair = [];
 		boardArrayObject.forEach(function(val){
@@ -595,7 +561,7 @@ function isRepetitionOfDelimiter(boardArrayObject, delimiter){
 		}
 
 	});
-	
+
 	if(arrayRepeticion.length === delimiter){
 		return true;
 	}else{
@@ -624,7 +590,7 @@ function getOuts(){
 	var highHandIndex = arrayHighHandScale.indexOf(highHand);
 
 	var packArrayObject = buildPackArrayObject();
-	
+
 	var arrayPairOuts = [];
 	var arrayTwoPairsOuts = [];
 	var arrayTreeOfaKindOuts = [];
@@ -718,21 +684,26 @@ function getOuts(){
 		});
 
 		var html = buildOutsHtml(boardArrayObject, arrayRoyalFlushOuts, arrayStraightFlushOuts, arrayFourofakindOuts, arrayFullHouseOuts, arrayFlushOuts, arrayStraightOuts, arrayTreeOfaKindOuts, arrayTwoPairsOuts, arrayPairOuts);
-	
+
 		var arrayOuts = countTotalOuts(arrayRoyalFlushOuts, arrayStraightFlushOuts, arrayFourofakindOuts, arrayFullHouseOuts, arrayFlushOuts, arrayStraightOuts, arrayTreeOfaKindOuts, arrayTwoPairsOuts, arrayPairOuts);
 
 		var totalOuts = arrayOuts.length;
-		$('.total-outs').html(totalOuts);
+		if(totalOuts > 0){
+			$('.total-outs').html(totalOuts);
+			$('.total-outs').parent().removeClass('hidden');
+		}else{
+			$('.total-outs').parent().addClass('hidden');
+		}
 		$('#outs-content').html(html);
 	}
-	
+
 }
 
 function calculateOutsPercentage(boardArrayObject, outsArrayObject){
 	var packTotalLength = 52;
 	var boardArrayLength = boardArrayObject.length;
 	var outsArrayLength = outsArrayObject.length;
-	
+
 	var diffTotal = packTotalLength - boardArrayLength;
 
 	emptyBoardPositionsCount = 0;

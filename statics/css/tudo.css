@@ -7,25 +7,34 @@ html, body{
 }
 
 /* TABLE  */
-table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
+.table td, .table th{
+	border: 1px solid #dee2e6;
 }
 
-td, th {
-	border: 1px solid #dddddd;
+.table-board td, .table-board th {
 	text-align: center;
-	padding: 8px;
+	padding: 3px;
 }
 
-tr:nth-child(even) {
+.table tr:nth-child(even) {
 	background-color: #dddddd;
+}
+
+.table{
+	margin-bottom: 0px !important;
+}
+
+.table-board{
+	height: 80px;
 }
 
 /* DETAILS */
 .diams, .hearts{
 	color: red;
+}
+
+label{
+	font-weight: bold;
 }
 
 
@@ -45,15 +54,19 @@ tr:nth-child(even) {
 	font-weight: normal;
 }
 
-.card, .card label {
+.cards, .cards label {
     cursor: pointer;
 }
 
 .inUse{
 	opacity: 0.8;
-    background: #827c7c;
+	background: #827c7c;
 }
 
-#tudao{
+.tudao{
 	background-color: rgba(238, 238, 238, 0.25);
+}
+
+.hidden{
+	display:none;
 }
