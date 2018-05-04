@@ -196,11 +196,11 @@ function getHighHand(boardArrayObject){
 	var royalFlush = isRoyalFlush(boardArrayObject);
 	if(royalFlush){
 		return "Royal Flush";
-	}
-
-	straightFlush = isStraightFlush(boardArrayObject);
-	if(straightFlush){
-		return "Straight Flush";
+	}else{
+		straightFlush = isStraightFlush(boardArrayObject);
+		if(straightFlush){
+			return "Straight Flush";
+		}
 	}
 
 	quadra = isFourOfaKind(boardArrayObject);
@@ -260,14 +260,21 @@ function ordenarArrayObject(boardArrayObject){
 function isRoyalFlush(boardArrayObject){
 	var sequenceArray = isStraight(boardArrayObject);
 	if(sequenceArray){
-		var flush = isFlush(sequenceArray);
+		var arrayLength = sequenceArray.length;
+		var sequenceArrayAux = [];
+		if(arrayLength > 5){
+			sequenceArrayAux = [sequenceArray[arrayLength - 5], sequenceArray[arrayLength - 4], sequenceArray[arrayLength - 3], sequenceArray[arrayLength - 2], sequenceArray[arrayLength - 1]];
+		}else{
+			sequenceArrayAux = sequenceArray;
+		}
+		var flush = isFlush(sequenceArrayAux);
 		if(
 			flush
-			&&	sequenceArray[0]['index'] === 9
-			&&	sequenceArray[1]['index'] === 10
-			&&	sequenceArray[2]['index'] === 11
-			&&	sequenceArray[3]['index'] === 12
-			&&	sequenceArray[4]['index'] === 13
+			&&	sequenceArray[arrayLength - 5]['index'] === 9
+			&&	sequenceArray[arrayLength - 4]['index'] === 10
+			&&	sequenceArray[arrayLength - 3]['index'] === 11
+			&&	sequenceArray[arrayLength - 2]['index'] === 12
+			&&	sequenceArray[arrayLength - 1]['index'] === 13
 		){
 			return true;
 		}else{
@@ -282,7 +289,14 @@ function isRoyalFlush(boardArrayObject){
 function isStraightFlush(boardArrayObject){
 	var sequenceArray = isStraight(boardArrayObject);
 	if(sequenceArray){
-		var flush = isFlush(sequenceArray);
+		var arrayLength = sequenceArray.length;
+		var sequenceArrayAux = [];
+		if(arrayLength > 5){
+			sequenceArrayAux = [sequenceArray[arrayLength - 5], sequenceArray[arrayLength - 4], sequenceArray[arrayLength - 3], sequenceArray[arrayLength - 2], sequenceArray[arrayLength - 1]];
+		}else{
+			sequenceArrayAux = sequenceArray;
+		}
+		var flush = isFlush(sequenceArrayAux);
 		if(flush){
 			return true;
 		}else{
@@ -615,7 +629,6 @@ function getOuts(){
 				}
 			});
 			if(!packCardIsInArray){
-
 				boardArrayObjectAux.push(packCard);
 				boardArrayObjectAux = ordenarArrayObject(boardArrayObjectAux);
 
@@ -623,57 +636,58 @@ function getOuts(){
 				var highHandIndexAux = arrayHighHandScale.indexOf(highHandAux);
 
 				if(highHandIndexAux > highHandIndex){
-
 					var royalFlush = isRoyalFlush(boardArrayObjectAux);
 					if(royalFlush){
 						if(arrayRoyalFlushOuts.indexOf(packCard) == -1){
 							arrayRoyalFlushOuts.push(packCard);
 						}
-					}
-					var straightFlush = isStraightFlush(boardArrayObjectAux);
-					if(straightFlush){
-						if(arrayStraightFlushOuts.indexOf(packCard) == -1){
-							arrayStraightFlushOuts.push(packCard);
+					}else{
+						var straightFlush = isStraightFlush(boardArrayObjectAux);
+						if(straightFlush && highHandIndex < arrayHighHandScale.indexOf("Straight Flush")){
+							if(arrayStraightFlushOuts.indexOf(packCard) == -1){
+								arrayStraightFlushOuts.push(packCard);
+							}
 						}
 					}
+
 					var FourOfaKind = isFourOfaKind(boardArrayObjectAux);
-					if(FourOfaKind){
+					if(FourOfaKind && highHandIndex < arrayHighHandScale.indexOf("Four of a kind")){
 						if(arrayFourofakindOuts.indexOf(packCard) == -1){
 							arrayFourofakindOuts.push(packCard);
 						}
 					}
 					var FullHouse = isFullHouse(boardArrayObjectAux);
-					if(FullHouse){
+					if(FullHouse && highHandIndex < arrayHighHandScale.indexOf("Full House")){
 						if(arrayFullHouseOuts.indexOf(packCard) == -1){
 							arrayFullHouseOuts.push(packCard);
 						}
 					}
 					var Flush = isFlush(boardArrayObjectAux);
-					if(Flush){
+					if(Flush && highHandIndex < arrayHighHandScale.indexOf("Flush")){
 						if(arrayFlushOuts.indexOf(packCard) == -1){
 							arrayFlushOuts.push(packCard);
 						}
 					}
 					var Straight = isStraight(boardArrayObjectAux);
-					if(Straight){
+					if(Straight && highHandIndex < arrayHighHandScale.indexOf("Straight")){
 						if(arrayStraightOuts.indexOf(packCard) == -1){
 							arrayStraightOuts.push(packCard);
 						}
 					}
 					var TreeOfaKind = isTreeOfaKind(boardArrayObjectAux);
-					if(TreeOfaKind){
+					if(TreeOfaKind && highHandIndex < arrayHighHandScale.indexOf("Tree Of a Kind")){
 						if(arrayTreeOfaKindOuts.indexOf(packCard) == -1){
 							arrayTreeOfaKindOuts.push(packCard);
 						}
 					}
 					var TwoPairs = isTwoPairs(boardArrayObjectAux);
-					if(TwoPairs){
+					if(TwoPairs && highHandIndex < arrayHighHandScale.indexOf("Two Pairs")){
 						if(arrayTwoPairsOuts.indexOf(packCard) == -1){
 							arrayTwoPairsOuts.push(packCard);
 						}
 					}
 					var Pair = isPair(boardArrayObjectAux);
-					if(Pair){
+					if(Pair && highHandIndex < arrayHighHandScale.indexOf("Pair")){
 						if(arrayPairOuts.indexOf(packCard) == -1){
 							arrayPairOuts.push(packCard);
 						}
